@@ -6,6 +6,8 @@ services:
       - "80:80"
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - app-network
 
   infinity:
     image: michaelf34/infinity:0.0.21
@@ -13,4 +15,10 @@ services:
     ports:
       - "8089:8080"
     tty: true # Equivalent to '-it' in Docker CLI, ensures the container's stdin is kept open
-    restart: always # Optional, ensures the container restarts if it crashes or on system reboot
+    restart: always # Optional, ensures the container restarts if it crashes or on system reboot    
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
