@@ -22,10 +22,11 @@ git clone https://github.com/jkbnerad/embeddings.git
 
 cd embeddings
 
-sudo apt install nginx
-sudo rm /etc/nginx/sites-enabled/*
+sudo apt install -y nginx
 sudo cp nginx/default-standard.conf /etc/nginx/sites-enabled/default
 sudo cp nginx/all.conf /etc/nginx/nginx.conf
-sudo systemctl reaload nginx
+sudo systemctl restart nginx
 
-sudo docker-compose up -d
+
+sudo docker rm -f $(sudo docker ps -aq)
+sudo docker-compose up -d --remove-orphans
