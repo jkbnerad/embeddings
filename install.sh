@@ -22,4 +22,10 @@ git clone https://github.com/jkbnerad/embeddings.git
 
 cd embeddings
 
+sudo apt install nginx
+sudo rm /etc/nginx/sites-enabled/*
+sudo cp nginx/default-standard.conf /etc/nginx/sites-enabled/default
+sudo cp nginx/all.conf /etc/nginx/nginx.conf
+sudo systemctl reaload nginx
+
 sudo docker-compose up -d
